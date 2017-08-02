@@ -6,7 +6,11 @@ window.onload = function(){
   // Page elements
   var countDownDateText = document.getElementById("countdown-date");
   var numCommits = document.getElementById("number-of-commits");
-  var timer = document.getElementById("countdown-timer");
+  var timerDone = document.getElementById("timer-done");
+  var timerDays = document.getElementById("countdown-days");
+  var timerHours = document.getElementById("countdown-hours");
+  var timerMinutes = document.getElementById("countdown-minutes");
+  var timerSeconds = document.getElementById("countdown-seconds");
   var commitButton = document.getElementById("commit-button");
 
   function timeConverter(timestamp){
@@ -73,17 +77,26 @@ window.onload = function(){
       // Time calculations for days, hours, minutes and seconds
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      hours < 10 ? hours = '0' + hours : hours;
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      minutes < 10 ? minutes = '0' + minutes : minutes;
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      seconds < 10 ? seconds = '0' + seconds : seconds;
 
       // Display the result
-      timer.innerHTML = days + "d " + hours + "h "
-      + minutes + "m " + seconds + "s ";
+      timerDays.innerHTML = days;
+      timerHours.innerHTML = hours;
+      timerMinutes.innerHTML = minutes;
+      timerSeconds.innerHTML = seconds;
 
       // If the count down is finished, let the user know 
       if (distance < 0 || commits.length >= 1000) {
         clearInterval(countDown);
-        timer.innerHTML = "Sidewalk Labs has pushed their 1000th commit!";
+        timerDone.innerHTML = "Sidewalk Labs has pushed their 1000th commit!";
+        days = 0;
+        hours = '00';
+        minutes = '00';
+        seconds = '00';
       }
     }, 1000);
 

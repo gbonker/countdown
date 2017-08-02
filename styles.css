@@ -1,3 +1,30 @@
-#countdown-timer {
-	font-size: 100px;
+#timer-done {
+	font-size: 50px;
+}
+
+.date-countdown {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+#commit-button {
+  margin-top: 30px;
+}
+
+.timer {
+  font-size: 100px;
+}
+
+.time-measure {
+  font-size: 32px;
+}
+
+@media screen and (max-width: 720px) {
+  .timer {
+    font-size: 50px;
+  }
+
+  .time-measure {
+    font-size: 16px;
+  }
 }
